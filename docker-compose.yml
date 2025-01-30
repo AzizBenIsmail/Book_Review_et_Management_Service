@@ -1,0 +1,31 @@
+
+version: "1.0"
+services:
+
+  mongodb:
+    image: "mongo:latest"
+    container_name: mongodb
+    # Utilisez l'image la plus récente de MongoDB
+    ports:
+      - "27020:27020"  # Port par défaut de MongoDB
+    command: mongod --port 27020
+    restart: unless-stopped
+    volumes:
+      - db:/data/db  # This line adds a volume to the MongoDB service
+
+  book_review_et_management_service:
+    image: azizbenismail/book_review_et_management_service:1.0.0
+    build:
+      context: ../Book_Review_et_Management_Service
+      dockerfile: dockerfile
+    container_name: book_review_et_management_service-container
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27020/darblockchain
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+
+volumes:
+  db:
