@@ -39,7 +39,7 @@ app.use(function (err, req, res, next) {
 });
 
 const server = http.createServer(app);
-server.listen(5000, () => {
+server.listen(process.env.Port, () => {
   connectToMongoDB();
   console.log("app is running on port 5000");
 });
