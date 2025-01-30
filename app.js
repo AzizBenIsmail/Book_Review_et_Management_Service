@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const http = require("http");
+const { connectToMongoDB } = require('./Config/db');
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -37,6 +38,7 @@ app.use(function (err, req, res, next) {
 
 const server = http.createServer(app);
 server.listen(5000, () => {
+  connectToMongoDB();
   console.log("app is running on port 5000");
 });
 
