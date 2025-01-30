@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema(
   {
@@ -32,6 +33,21 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+userSchema.pre('save', async function (next) {
+    try {
+      //cryptage password + statu + createdAt et updatedAt
+      const salt = await bcrypt.genSalt()
+      const User = this
+      User.password = await bcrypt.hash(User.password, salt)
+      User.createdAt = new Date()
+      User.updatedAt = new Date()  
+      next()
+    } catch (error) {
+      next(error)
+    }
+  })
+
 
 const User = mongoose.model("User", userSchema);
 
