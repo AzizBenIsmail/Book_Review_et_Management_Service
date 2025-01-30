@@ -10,3 +10,14 @@ module.exports.getAllUsers = async (req, res) => {
     }
   };
 
+  module.exports.register = async (req, res) => {
+    try {
+    const { userName , email, password } = req.body;
+        
+      const addedusers = await userService.register(userName , email, password);
+  
+      res.status(200).json({ addedusers });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };

@@ -5,3 +5,8 @@ exports.getAllUsers = async () => {
   return await userModel.find();
 };
 
+exports.register = async (userName , email, password) => {
+    const role = "user"
+    const user = new userModel({ userName , email, password ,role });
+    return await user.save();
+  };
