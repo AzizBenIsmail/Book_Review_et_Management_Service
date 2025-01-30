@@ -1,4 +1,11 @@
 const userService = require("../services/userService");
+const jwt = require("jsonwebtoken");
+
+const maxAge = 2 * 60 * 60; //2H
+
+const createToken = (id) => {
+  return jwt.sign({ id }, "net DAR BLOCKCHAIN secret", { expiresIn: maxAge });
+};
 
 module.exports.getAllUsers = async (req, res) => {
     try {
@@ -22,13 +29,15 @@ module.exports.getAllUsers = async (req, res) => {
     }
   };
 
+  
   module.exports.login = async (req, res) => {
     try {
     const { email, password } = req.body;
         
-      const login = await userService.login(email, password);
-  
-      res.status(200).json({ login });
+      const user = await userService.login(email, password);
+      const token = createToken(user._id);
+      res.cookie("jwt_token", token, { httpOnly: false, maxAge: maxAge * 1000 });
+      res.status(200).json({ user , token });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
