@@ -21,3 +21,15 @@ module.exports.getAllUsers = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+  module.exports.login = async (req, res) => {
+    try {
+    const { email, password } = req.body;
+        
+      const login = await userService.login(email, password);
+  
+      res.status(200).json({ login });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };

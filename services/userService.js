@@ -10,3 +10,8 @@ exports.register = async (userName , email, password) => {
     const user = new userModel({ userName , email, password ,role });
     return await user.save();
   };
+
+
+  exports.login = async ( email, password) => {
+    return await userModel.login(email, password);;
+  };
