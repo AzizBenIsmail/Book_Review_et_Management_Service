@@ -5,8 +5,19 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const http = require("http");
 const { connectToMongoDB } = require('./Config/db');
+const session = require('express-session');
 
 require('dotenv').config();
+
+app.use(session({
+  secret: 'net DAR BLOCKCHAIN secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie:{
+    secure: false, // À définir sur true si vous utilisez HTTPS
+    maxAge: 2 * 60 * 60,
+  }
+}))
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/usersRouter");

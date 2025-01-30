@@ -15,9 +15,10 @@ const requireAuthUser = async (req, res, next) => {
                 console.log("decodedToken",decodedToken)
                 console.log("decodedToken id ",decodedToken.id)
 
-                    //Sans session pour le moment  
+                    //Sans session pour le moment 
                 user = await userModel.findById(decodedToken.id)
                 console.log("user", user)
+                req.session.user = user
                 next();
             }
 
