@@ -6,6 +6,8 @@ var logger = require("morgan");
 const http = require("http");
 const { connectToMongoDB } = require('./Config/db');
 
+require('dotenv').config();
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
