@@ -9,10 +9,11 @@ router.get('/', function(req, res, next) {
   res.status(200).json('testUsers mrigla');
 });
 
-router.get('/getAllUsers',requireAuthUser,ControledAcces,userController.getAllUsers );
+router.get('/getAllUsers',requireAuthUser,userController.getAllUsers );
 router.post('/register',userController.register );
 router.post('/login',userController.login );
-router.delete('/delete/:id',userController.deleteUser );
+router.get('/logout',requireAuthUser,userController.logout );
+router.delete('/deleteUserById/:id',requireAuthUser,ControledAcces,userController.deleteUser );
 
 
 module.exports = router;
