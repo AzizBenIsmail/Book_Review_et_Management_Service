@@ -52,3 +52,14 @@ module.exports.getAllUsers = async (req, res) => {
         res.status(500).json({ message: error.message });
       }
   };
+
+  module.exports.logout = async (req, res) => {
+    try {
+      const id = req.session.user._id;
+      await userService.findUserById(id);
+      res.cookie("jwt_token", "", { httpOnly: false, maxAge: 1 });
+      res.status(200).json({});
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };

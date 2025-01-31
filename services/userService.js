@@ -1,9 +1,13 @@
 const userModel = require("../models/userModel");
 
 exports.getAllUsers = async () => {
-    console.log(userModel.find())
   return await userModel.find();
 };
+
+exports.findUserById = async (id) => {
+  return await userModel.findById(id);
+};
+
 
 exports.register = async (userName , email, password) => {
     const role = "user"
