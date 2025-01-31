@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const maxAge = 2 * 60 * 60; //2H
 
 const createToken = (id) => {
-  return jwt.sign({ id }, "net DAR BLOCKCHAIN secret", { expiresIn: maxAge });
+  return jwt.sign({ id }, process.env.Net_Secret, { expiresIn: maxAge });
 };
 
 module.exports.getAllUsers = async (req, res) => {

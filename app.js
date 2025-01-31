@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(session({
-  secret: 'net DAR BLOCKCHAIN secret',
+  secret: process.env.Net_Secret,
   resave: false,
   saveUninitialized: true,
   cookie:{

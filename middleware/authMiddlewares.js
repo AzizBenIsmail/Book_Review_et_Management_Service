@@ -7,7 +7,7 @@ const requireAuthUser = async (req, res, next) => {
 
     if(token) {
 
-        jwt.verify(token,"net DAR BLOCKCHAIN secret",async (err, decodedToken) => {
+        jwt.verify(token,process.env.Net_Secret,async (err, decodedToken) => {
 
             if(err) {
                 res.status(401).json("problem decoding token")
