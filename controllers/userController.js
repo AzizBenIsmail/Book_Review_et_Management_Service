@@ -42,3 +42,13 @@ module.exports.getAllUsers = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+  module.exports.deleteUser = async (req, res) => {
+    try {
+        const { id } = req.params; 
+        await userService.Delete(id);
+        res.status(200).json( "deleted" );
+      } catch (error) {
+        res.status(500).json({ message: error.message });
+      }
+  };

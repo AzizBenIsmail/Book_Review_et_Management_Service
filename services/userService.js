@@ -15,3 +15,7 @@ exports.register = async (userName , email, password) => {
   exports.login = async ( email, password) => {
     return await userModel.login(email, password);;
   };
+
+  exports.Delete = async (id) => {
+    return await userModel.findByIdAndDelete(id);;
+  };
