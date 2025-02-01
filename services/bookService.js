@@ -18,23 +18,20 @@ exports.getAllBooks = async (page, limit) => {
 
 exports.findBookById = async (id) => {
     try {
-        // 1. Récupère les détails du livre depuis la base de données
         const book = await bookModel.findById(id);
         if (!book) {
           throw new Error("Livre non trouvé");
         }
     
-        // 2. (Optionnel) Enrichir les données avec une API externe (Google Books)
-        const googleBooksResponse = await axios.get(
+        const googleBook = await axios.get(
           `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(book.title)}`
         );
     
-        const googleBookData = googleBooksResponse.data.items?.[0]?.volumeInfo || null;
-    
-        // 3. Combine les données
+        const googleBookData = googleBook.data.items?.[0]?.volumeInfo || null;
+
         const enrichedBook = {
-          ...book.toObject(), // Convertit le document Mongoose en objet JavaScript
-          externalData: googleBookData, // Ajoute les données de l'API externe
+          ...book.toObject(), 
+          externalData: googleBookData, 
         };
     
         return enrichedBook;
