@@ -7,8 +7,8 @@ const uploadfile = require('../middlewares/uploadfile');
 
 router.get('/getAllBooks',requireAuthUser,bookContoller.getAllBooks );
 router.post('/addBook',requireAuthUser,uploadfile.single("book_image"),bookContoller.addBook );
-// router.post('/login',userController.login );
-// router.get('/logout',requireAuthUser,userController.logout );
+router.put('/updateBook/:id',requireAuthUser,uploadfile.single("book_image"),bookContoller.updateBook );
+router.get('/getBookById/:id',requireAuthUser,bookContoller.getBookById );
 router.delete('/deleteBookById/:id',requireAuthUser,ControledAcces,bookContoller.deleteBookById );
 
 
