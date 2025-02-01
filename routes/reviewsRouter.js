@@ -6,9 +6,9 @@ const {ControledAcces} = require('../middlewares/ControledAcces');
 
 router.get('/getAllReviws',requireAuthUser,reviewController.getAllReviws );
 router.post('/addReview/:id',requireAuthUser,reviewController.addReview );
-// router.put('/updateBook/:id',requireAuthUser,uploadfile.single("book_image"),bookContoller.updateBook );
+router.put('/updateReview/:id',requireAuthUser,reviewController.updateReview );
 // router.get('/getBookById/:id',requireAuthUser,bookContoller.getBookById );
-// router.delete('/deleteBookById/:id',requireAuthUser,ControledAcces,bookContoller.deleteBookById );
+router.delete('/deleteReviewById/:id',requireAuthUser,reviewController.deleteReviewById );
 
 
 module.exports = router;

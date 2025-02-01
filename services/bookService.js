@@ -1,4 +1,6 @@
 const bookModel = require("../models/bookModel");
+const reviewsModel = require("../models/reviewsModel");
+const userModel = require("../models/userModel");
 const axios = require("axios"); 
 
 exports.getAllBooks = async (page, limit) => {
@@ -47,8 +49,8 @@ exports.addBook = async (bookData) => {
 };
 
 exports.updateBook = async (bookData) => {
-  const checkIfBookExists = await bookModel.findById(bookData.id);
-  if (!checkIfBookExists) {
+  const book = await bookModel.findById(bookData.id);
+  if (!book) {
     throw new Error("Book not found !");
   }
 
@@ -62,5 +64,7 @@ exports.updateBook = async (bookData) => {
 };
 
 exports.deleteBookById = async (id) => {
+  await reviewsModel.deleteMany({book : id})
+  //probleme au niveau supp relation avec user complique 
   return await bookModel.findByIdAndDelete(id);
 };

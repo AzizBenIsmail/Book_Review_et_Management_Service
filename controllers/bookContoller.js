@@ -33,6 +33,8 @@ module.exports.addBook = async (req, res) => {
     try {
         const { id } = req.params; 
         await bookService.deleteBookById(id);
+
+        
         res.status(200).json( "deleted" );
       } catch (error) {
         res.status(500).json({ message: error.message });
@@ -41,7 +43,7 @@ module.exports.addBook = async (req, res) => {
 
   module.exports.updateBook = async (req, res) => {
     try {
-      const { id } = req.params; //get d id from params
+      const { id } = req.params; 
       const bookData = {
         ...req.body,
       };
