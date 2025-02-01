@@ -6,7 +6,7 @@ const bookSchema = new mongoose.Schema(
     author: String,     
     genre: String,     
     book_image: { type: String, required: false, },
-
+    review : [{type : mongoose.Schema.Types.ObjectId, ref: 'review',}]
   },
   { timestamps: true }
 );
