@@ -34,19 +34,13 @@ Lorsque vous démarrez le serveur en utilisant la commande :
 ```bash
 npm run dev 
 ``` 
+### 4. **Routes disponibles**
 
-### 4. **Lancer le Serveur**
-
-Lorsque vous démarrez le serveur en utilisant la commande : 
-
-```bash
-npm run dev 
-``` 
-### 5. **Routes disponibles**
+! Important : il faut être authentifié pour tester les routes.
 
 #### 1. **Utilisateurs**
 ```bash
-GET /users/getAllUsers - Récupère tous les utilisateurs.
+GET /users/getAllUsers - Récupère tous les utilisateurs. 
 
 POST /users/register - Enregistre un nouvel utilisateur.
 
