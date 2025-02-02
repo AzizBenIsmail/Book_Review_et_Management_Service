@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 router.get('/getAllUsers',requireAuthUser,userController.getAllUsers );
 router.post('/register',userController.register );
 router.post('/login',userController.login );
+router.get('/refreshToken',userController.refreshToken );
 router.get('/logout',requireAuthUser,userController.logout );
 router.delete('/deleteUserById/:id',requireAuthUser,ControledAcces,userController.deleteUser );
 
