@@ -105,7 +105,7 @@ POST /books/addBook - Ajoute un nouveau livre.
 
 form-date avec une image 
 
-![alt text](./public/images/image.png)
+(./public/images/image.png)
 
 PUT /books/updateBook/:id - Met à jour un livre par son ID.
 
