@@ -12,6 +12,39 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
 
 Pour tester les routes de l'API, vous pouvez utiliser un outil comme [Postman](https://www.postman.com/) 
 
+! Important : Une base de données sera automatiquement créée (si elle n'existe pas déjà) et remplie avec des données d'exemple pour faciliter les tests. Cela vous permet de gagner du temps en ayant des données prêtes à l'emploi lors de vos tests. 
+
+### Utilisateurs ajoutés par défaut :
+
+- **admin** : 
+  - Email : admin.tn@gmail.com
+  - Mot de passe : Azerty123&
+  - Rôle : admin
+- **client** : 
+  - Email : client.tn@gmail.com
+  - Mot de passe : Azerty123&
+  - Rôle : user
+- **client1** : 
+  - Email : client1.tn@gmail.com
+  - Mot de passe : Azerty123&
+  - Rôle : user
+
+### Livres ajoutés par défaut :
+
+1. **To Kill a Mockingbird** (Harper Lee) - Genre : Fiction
+2. **1984** (George Orwell) - Genre : Dystopian
+3. **The Great Gatsby** (F. Scott Fitzgerald) - Genre : Classic
+4. **Pride and Prejudice** (Jane Austen) - Genre : Romance
+5. **Moby-Dick** (Herman Melville) - Genre : Adventure
+6. **The Catcher in the Rye** (J.D. Salinger) - Genre : Coming of Age
+7. **The Hobbit** (J.R.R. Tolkien) - Genre : Fantasy
+8. **Fahrenheit 451** (Ray Bradbury) - Genre : Science Fiction
+9. **Crime and Punishment** (Fyodor Dostoevsky) - Genre : Crime
+10. **The Picture of Dorian Gray** (Oscar Wilde) - Genre : Philosophical
+
+Ces données sont insérées automatiquement lorsque vous exécutez le serveur pour la première fois. Elles vous permettent de tester rapidement les fonctionnalités de votre API sans avoir besoin de les insérer manuellement.
+
+
 ### 1. **Installer les dépendances**
 
 ```bash
@@ -42,11 +75,22 @@ npm run dev
 
 #### 1. **Utilisateurs**
 ```bash
-GET /users/getAllUsers - Récupère tous les utilisateurs. 
+GET /users/getAllUsers - Récupère tous les utilisateurs.  
 
 POST /users/register - Enregistre un nouvel utilisateur.
 
+body :{
+        "email": "admin.tn@gmail.com",
+        "userName" : "user1",
+        "password": "Azerty123&"
+    }
+
 POST /users/login - Connecte un utilisateur.
+
+body :{
+        "email": "admin.tn@gmail.com",
+        "password": "Azerty123&"
+    }
 
 GET /users/logout - Déconnecte un utilisateur.
 
