@@ -105,15 +105,19 @@ POST /books/addBook - Ajoute un nouveau livre.
 
 form-date avec une image 
 
-(./public/images/image.png)
-
 PUT /books/updateBook/:id - Met à jour un livre par son ID.
 
 GET /books/getBookById/:id - Récupère un livre par son ID.
 
 GET /books/searchBooks - Recherche des livres.
 
-GET /books/searchFilterBooks - Recherche et filtre des livres.
+body : {
+    "title":"javaScript",
+    "author":"AzizBenIsmail",
+    "genre":"dev"
+}
+
+GET /books/searchFilterBooks?title=javaScript&author=AzizBenIsmail&genre=web&page=1&limit=2 - Recherche et filtre des livres.
 
 DELETE /books/deleteBookById/:id - Supprime un livre par son ID.
 ``` 
@@ -124,7 +128,17 @@ GET /reviews/getAllReviws - Récupère tous les commentaires.
 
 POST /reviews/addReview/:id - Ajoute un commentaire à un livre.
 
+bpdy : {
+    "rating" : 4.5,
+    "comment" : "bad news "
+}
+
 PUT /reviews/updateReview/:id - Met à jour un commentaire par son ID.
+
+bpdy : {
+    "rating" : 4.5,
+    "comment" : "bad news "
+}
 
 DELETE /reviews/deleteReviewById/:id - Supprime un commentaire par son ID. 
 ``` 
