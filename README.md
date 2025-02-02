@@ -21,6 +21,8 @@ npm install
 
 Créez un fichier .env à la racine du projet et ajoutez les variables d'environnement suivantes :
 
+! Important : Dans cet exemple, j'ai pusher le dotenv pour faciliter la tâche .
+
 ```bash
 PORT=5000
 Net_Secret=votre_clé_secrète
