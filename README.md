@@ -6,6 +6,8 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
 
 Il est recommandé d’installer npm pour mieux gérer les versions de Node.
 
+pour le docker version node 20.18.0
+
 - [Node.js](https://nodejs.org/) (version 16.14.2 ou supérieure)
 - [MongoDB](https://www.mongodb.com/) (version 4.0.3 ou supérieure)
 - [Git](https://github.com/AzizBenIsmail/Book_Review_et_Management_Service) (pour cloner le dépôt)

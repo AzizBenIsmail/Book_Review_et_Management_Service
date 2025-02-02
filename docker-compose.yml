@@ -14,7 +14,7 @@ services:
       - db:/data/db  # This line adds a volume to the MongoDB service
 
   book_review_et_management_service:
-    image: azizbenismail/book_review_et_management_service:1.0.0
+    image: azizbenismail/book_review_et_management_service:2.0.0
     build:
       context: ../Book_Review_et_Management_Service
       dockerfile: dockerfile
