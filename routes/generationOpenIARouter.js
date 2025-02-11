@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Initialiser OpenAI avec la clé API
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "",
 });
 
 // Endpoint pour générer du texte
@@ -18,15 +18,16 @@ router.post("/generate", async (req, res) => {
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
+        model: "gpt-4o-mini",
+        store: true,
+        messages: [
         {
           role: "system",
           content: `Tu es un rédacteur expert en ${domain}. Rédige un post professionnel.`,
         },
         { role: "user", content: prompt },
       ],
-      max_tokens: 200,
+      max_tokens: 50,
     });
 
     res.json({ generatedText: response.choices[0].message.content });
