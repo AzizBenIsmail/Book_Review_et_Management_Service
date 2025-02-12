@@ -6,15 +6,22 @@ var logger = require("morgan");
 const http = require("http");
 const { connectToMongoDB } = require('./Config/db');
 const session = require('express-session');
+const passport = require("./Config/passportConfig");
 
 require('dotenv').config();
+
+
+
 
 var usersRouter = require("./routes/usersRouter");
 var booksRouter = require("./routes/booksRouter");
 var reviewsRouter = require("./routes/reviewsRouter");
+var authGoogleRouter = require("./routes/authGoogleRouter");
+var authDiscordRouter = require("./routes/authDiscordRouter");
 var generationRouter = require("./routes/generationOpenIARouter");
 var generationGeminiRouter = require("./routes/generationGeminiRouter");
 var generationDeepseekRouter = require("./routes/generationDeepseekRouter");
+var generationAnthropicRouter = require("./routes/generationAnthropicRouter");
 
 var app = express();
 
@@ -33,13 +40,19 @@ app.use(session({
     maxAge: 2 * 60 * 60,
   }
 }))
+// Initialiser passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/users", usersRouter);
 app.use("/books", booksRouter);
 app.use("/reviews", reviewsRouter);
 app.use("/generation", generationRouter);
+app.use("/authDiscord", authDiscordRouter);
 app.use("/generationGemini", generationGeminiRouter);
 app.use("/generationDeepseek", generationDeepseekRouter);
+app.use("/generationAnthropic", generationAnthropicRouter);
+app.use("/authGoogle",authGoogleRouter );
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -54,7 +67,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.json("error");
 });
 
 const server = http.createServer(app);
