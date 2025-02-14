@@ -16,6 +16,7 @@ require('dotenv').config();
 var usersRouter = require("./routes/usersRouter");
 var booksRouter = require("./routes/booksRouter");
 var reviewsRouter = require("./routes/reviewsRouter");
+var messageDiscordRouter = require("./routes/messageDiscordRouter");
 var authGoogleRouter = require("./routes/authGoogleRouter");
 var authDiscordRouter = require("./routes/authDiscordRouter");
 var generationRouter = require("./routes/generationOpenIARouter");
@@ -48,11 +49,16 @@ app.use("/users", usersRouter);
 app.use("/books", booksRouter);
 app.use("/reviews", reviewsRouter);
 app.use("/generation", generationRouter);
+app.use("/authGoogle",authGoogleRouter );
 app.use("/authDiscord", authDiscordRouter);
+app.use("/messageDiscord", messageDiscordRouter);
 app.use("/generationGemini", generationGeminiRouter);
 app.use("/generationDeepseek", generationDeepseekRouter);
 app.use("/generationAnthropic", generationAnthropicRouter);
-app.use("/authGoogle",authGoogleRouter );
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
