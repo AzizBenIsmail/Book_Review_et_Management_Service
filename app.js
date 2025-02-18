@@ -23,7 +23,6 @@ var authDiscordRouter = require("./routes/authDiscordRouter");
 var generationRouter = require("./routes/generationOpenIARouter");
 var generationGeminiRouter = require("./routes/generationGeminiRouter");
 var generationDeepseekRouter = require("./routes/generationDeepseekRouter");
-var generationAnthropicRouter = require("./routes/generationAnthropicRouter");
 
 var app = express();
 
@@ -56,11 +55,6 @@ app.use("/authDiscord", authDiscordRouter);
 app.use("/messageDiscord", messageDiscordRouter);
 app.use("/generationGemini", generationGeminiRouter);
 app.use("/generationDeepseek", generationDeepseekRouter);
-app.use("/generationAnthropic", generationAnthropicRouter);
-
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
